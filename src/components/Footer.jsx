@@ -31,11 +31,11 @@ export default function Footer() {
                             IP-free media at scale—from concept to delivery.
                         </p>
                         <div className="footer-social">
-                            <a href="#" aria-label="LinkedIn">in</a>
-                            <a href="#" aria-label="Twitter/X">𝕏</a>
-                            <a href="#" aria-label="Instagram">ig</a>
-                            <a href="#" aria-label="Behance">Bē</a>
-                            <a href="#" aria-label="YouTube">▶</a>
+                            <a href="https://www.linkedin.com/in/harshjain0571/" aria-label="LinkedIn">ln</a>
+                            <a href="https://x.com/bc_total" aria-label="Twitter/X">𝕏</a>
+                            <a href="https://www.instagram.com/get_ai_with_me/" aria-label="Instagram">ig</a>
+                            <a href="https://www.behance.net/babatotalbcbtb" aria-label="Behance">Bē</a>
+                            <a href="https://www.youtube.com/@babatotalbc" aria-label="YouTube">▶</a>
                         </div>
                     </div>
 
@@ -55,18 +55,18 @@ export default function Footer() {
                         <div className="footer-column">
                             <h4>Services</h4>
                             <ul>
-                                <li><Link to="/services">AI Image Campaigns</Link></li>
-                                <li><Link to="/services">AI Video Ads</Link></li>
-                                <li><Link to="/services">Custom Audio</Link></li>
-                                <li><Link to="/services">Localization</Link></li>
-                                <li><Link to="/services">High-Volume Production</Link></li>
+                                <li><Link to="/services/#ai-image-campaigns">AI Image Campaigns</Link></li>
+                                <li><Link to="/services/#ai-video-ads">AI Video Ads</Link></li>
+                                <li><Link to="/services/#custom-audio">Custom Audio</Link></li>
+                                <li><Link to="/services/#localization">Localization</Link></li>
+                                <li><Link to="/services/#high-volume-production">High-Volume Production</Link></li>
                             </ul>
                         </div>
 
                         <div className="footer-column">
                             <h4>Contact</h4>
                             <ul>
-                                <li><a href="mailto:hello@harshjain.ai">hello@harshjain.ai</a></li>
+                                <li><a href="mailto:kzr0571@gmail.com">kzr0571@gmail.com</a></li>
                                 <li><span style={{ color: 'var(--text-secondary)', fontSize: '0.88rem' }}>Remote — Global</span></li>
                                 <li><Link to="/contact">Start a Project</Link></li>
                             </ul>

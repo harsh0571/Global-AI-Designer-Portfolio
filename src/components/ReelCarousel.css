@@ -140,6 +140,20 @@
     align-items: center;
     justify-content: center;
     z-index: 2;
+    transition: opacity 0.3s ease;
+}
+
+.reel-play-overlay.hidden {
+    opacity: 0;
+    pointer-events: none;
+}
+
+/* Transparent overlay to catch clicks while playing */
+.reel-pause-overlay {
+    position: absolute;
+    inset: 0;
+    z-index: 2;
+    cursor: pointer;
 }
 
 .reel-play-btn {
