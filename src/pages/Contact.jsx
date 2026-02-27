@@ -33,25 +33,25 @@ export default function Contact() {
                 <div className="container">
                     <div className="contact-layout">
                         <ScrollReveal>
-                            <form className="contact-form" onSubmit={e => e.preventDefault()}>
+                            <form className="contact-form" action="https://formspree.io/f/xvzbybql" method="POST">
                                 <div className="form-row">
                                     <div className="form-group">
                                         <label htmlFor="name">Name</label>
-                                        <input id="name" type="text" placeholder="Your full name" />
+                                        <input id="name" name="name" type="text" placeholder="Your full name" required />
                                     </div>
                                     <div className="form-group">
                                         <label htmlFor="email">Email</label>
-                                        <input id="email" type="email" placeholder="you@company.com" />
+                                        <input id="email" name="email" type="email" placeholder="you@company.com" required />
                                     </div>
                                 </div>
                                 <div className="form-row">
                                     <div className="form-group">
                                         <label htmlFor="brand">Brand / Company</label>
-                                        <input id="brand" type="text" placeholder="Company name" />
+                                        <input id="brand" name="brand" type="text" placeholder="Company name" />
                                     </div>
                                     <div className="form-group">
                                         <label htmlFor="timezone">Your Timezone</label>
-                                        <select id="timezone">
+                                        <select id="timezone" name="timezone">
                                             {timezones.map(tz => <option key={tz} value={tz}>{tz}</option>)}
                                         </select>
                                     </div>
@@ -61,7 +61,7 @@ export default function Contact() {
                                     <div className="checkbox-group">
                                         {serviceOptions.map(service => (
                                             <label key={service} className={`checkbox-item ${checkedServices.includes(service) ? 'checked' : ''}`}>
-                                                <input type="checkbox" checked={checkedServices.includes(service)} onChange={() => toggleService(service)} />
+                                                <input type="checkbox" name="services" value={service} checked={checkedServices.includes(service)} onChange={() => toggleService(service)} />
                                                 <span className="checkbox-dot">{checkedServices.includes(service) ? <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="#000" strokeWidth="3"><polyline points="20 6 9 17 4 12" /></svg> : ''}</span>
                                                 {service}
                                             </label>
@@ -70,15 +70,15 @@ export default function Contact() {
                                 </div>
                                 <div className="form-group">
                                     <label htmlFor="intended-use">Intended Use</label>
-                                    <input id="intended-use" type="text" placeholder="Social campaign, TV ad, product launch, etc." />
+                                    <input id="intended-use" name="intended_use" type="text" placeholder="Social campaign, TV ad, product launch, etc." />
                                 </div>
                                 <div className="form-group">
                                     <label htmlFor="deadline">Deadline</label>
-                                    <input id="deadline" type="date" />
+                                    <input id="deadline" name="deadline" type="date" />
                                 </div>
                                 <div className="form-group">
                                     <label htmlFor="message">Message</label>
-                                    <textarea id="message" placeholder="Describe your project in detail—what assets you need, brand guidelines, reference materials, etc." />
+                                    <textarea id="message" name="message" placeholder="Describe your project in detail—what assets you need, brand guidelines, reference materials, etc." required />
                                 </div>
                                 <button className="btn btn-primary" type="submit" style={{ alignSelf: 'flex-start' }}>Send Project Brief →</button>
                             </form>
@@ -90,7 +90,7 @@ export default function Contact() {
                                     <div className="contact-info-icon"><IconMail size={22} color="var(--accent-teal)" /></div>
                                     <div className="contact-info-text">
                                         <h4>Email</h4>
-                                        <p><a href="mailto:hello@harshjain.ai" style={{ color: 'var(--accent-teal)' }}>hello@harshjain.ai</a></p>
+                                        <p><a href="mailto:kzr0571@gmail.com" style={{ color: 'var(--accent-teal)' }}>kzr0571@gmail.com</a></p>
                                     </div>
                                 </div>
                                 <div className="card contact-info-card">
@@ -116,7 +116,11 @@ export default function Contact() {
                                 </div>
                                 <div className="card schedule-call">
                                     <p>Prefer a quick call?</p>
-                                    <button className="btn btn-outline">Schedule a Call →</button>
+                                    <form action="https://formspree.io/f/xvzbybql" method="POST" style={{ margin: 0 }}>
+                                        <input type="hidden" name="subject" value="Schedule a Call Request" />
+                                        <input type="hidden" name="message" value="I would like to schedule a call." />
+                                        <button className="btn btn-outline" type="submit">Schedule a Call →</button>
+                                    </form>
                                 </div>
                             </div>
                         </ScrollReveal>

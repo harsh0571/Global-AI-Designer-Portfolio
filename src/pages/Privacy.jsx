@@ -30,7 +30,7 @@ export default function Privacy() {
                             <p>We use trusted third-party services for email delivery and form processing. These services have their own privacy policies and are GDPR-compliant.</p>
 
                             <h2>6. Your Rights</h2>
-                            <p>You have the right to access, correct, or delete any personal data we hold about you. To exercise these rights, contact us at <a href="mailto:hello@harshjain.ai" style={{ color: 'var(--accent-teal)' }}>hello@harshjain.ai</a>.</p>
+                            <p>You have the right to access, correct, or delete any personal data we hold about you. To exercise these rights, contact us at <a href="mailto:kzr0571@gmail.com" style={{ color: 'var(--accent-teal)' }}>kzr0571@gmail.com</a>.</p>
 
                             <h2>7. Changes to This Policy</h2>
                             <p>We may update this policy from time to time. Any changes will be posted on this page with an updated revision date.</p>
