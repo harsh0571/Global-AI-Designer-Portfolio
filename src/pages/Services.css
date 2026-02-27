@@ -1,0 +1,140 @@
+/* ===== SERVICES PAGE ===== */
+.services-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+}
+
+.service-section {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+    align-items: center;
+    padding: 100px 0;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.service-section:last-child {
+    border-bottom: none;
+}
+
+.service-section.reverse {
+    direction: rtl;
+}
+
+.service-section.reverse>* {
+    direction: ltr;
+}
+
+.service-visual {
+    aspect-ratio: 4/3;
+    border-radius: var(--radius-xl);
+    overflow: hidden;
+    position: relative;
+    border: 1px solid var(--border-color);
+}
+
+.service-visual-gradient {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 3.5rem;
+}
+
+.service-visual .service-number {
+    position: absolute;
+    top: 18px;
+    right: 18px;
+    font-family: 'Plus Jakarta Sans';
+    font-size: 0.72rem;
+    font-weight: 700;
+    color: var(--accent-teal);
+    background: rgba(26, 192, 181, 0.08);
+    border: 1px solid rgba(26, 192, 181, 0.2);
+    padding: 8px 16px;
+    border-radius: var(--radius-pill);
+}
+
+.service-content h3 {
+    font-size: 1.8rem;
+    margin-bottom: 16px;
+}
+
+.service-content>p {
+    font-size: 1rem;
+    margin-bottom: 28px;
+    line-height: 1.7;
+}
+
+.service-bullets {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    margin-bottom: 36px;
+}
+
+.service-bullet {
+    display: flex;
+    align-items: flex-start;
+    gap: 14px;
+    font-size: 0.92rem;
+    color: var(--text-secondary);
+}
+
+.service-bullet .bullet-icon {
+    width: 22px;
+    height: 22px;
+    border-radius: 50%;
+    background: rgba(26, 192, 181, 0.1);
+    border: 1px solid rgba(26, 192, 181, 0.2);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.6rem;
+    color: var(--accent-teal);
+    flex-shrink: 0;
+    margin-top: 2px;
+}
+
+/* Bottom CTA */
+.services-cta {
+    text-align: center;
+    padding: 120px 0;
+    position: relative;
+    overflow: hidden;
+}
+
+.services-cta::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(circle at 50% 50%, rgba(26, 192, 181, 0.04) 0%, rgba(255, 107, 53, 0.02) 50%, transparent 70%);
+}
+
+.services-cta .container {
+    position: relative;
+}
+
+.services-cta h2 {
+    margin-bottom: 16px;
+}
+
+.services-cta p {
+    max-width: 500px;
+    margin: 0 auto 36px;
+    font-size: 1.05rem;
+}
+
+@media (max-width: 768px) {
+    .service-section {
+        grid-template-columns: 1fr;
+        gap: 32px;
+        padding: 60px 0;
+    }
+
+    .service-section.reverse {
+        direction: ltr;
+    }
+}

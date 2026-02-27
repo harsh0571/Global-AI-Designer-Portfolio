@@ -1,0 +1,228 @@
+/* ===== CONTACT PAGE ===== */
+.contact-layout {
+    display: grid;
+    grid-template-columns: 1.2fr 1fr;
+    gap: 60px;
+    align-items: start;
+}
+
+/* Form */
+.contact-form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.form-group label {
+    font-family: 'Plus Jakarta Sans';
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--text-secondary);
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+    padding: 16px 22px;
+    border-radius: var(--radius-lg);
+    border: 1px solid var(--border-color);
+    background: var(--bg-card);
+    color: var(--text-primary);
+    font-size: 0.95rem;
+    transition: border-color var(--transition-fast);
+}
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+    border-color: var(--accent-teal);
+    box-shadow: 0 0 0 3px var(--accent-glow);
+}
+
+.form-group input::placeholder,
+.form-group textarea::placeholder {
+    color: var(--text-muted);
+}
+
+.form-group select {
+    -webkit-appearance: none;
+    appearance: none;
+    cursor: pointer;
+}
+
+.form-group textarea {
+    min-height: 130px;
+    resize: vertical;
+}
+
+.form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+}
+
+/* Checkboxes */
+.checkbox-group {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.checkbox-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 12px 20px;
+    border-radius: var(--radius-pill);
+    border: 1px solid var(--border-color);
+    background: var(--bg-card);
+    cursor: pointer;
+    transition: all var(--transition-base);
+    font-size: 0.88rem;
+    color: var(--text-secondary);
+}
+
+.checkbox-item:hover {
+    border-color: var(--border-hover);
+}
+
+.checkbox-item.checked {
+    border-color: var(--accent-teal);
+    background: rgba(26, 192, 181, 0.08);
+    color: var(--accent-teal);
+}
+
+.checkbox-item input {
+    display: none;
+}
+
+.checkbox-dot {
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    border: 2px solid var(--border-color);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.6rem;
+    transition: all var(--transition-fast);
+}
+
+.checkbox-item.checked .checkbox-dot {
+    border-color: var(--accent-teal);
+    background: var(--accent-teal);
+    color: #000;
+}
+
+/* Contact Info */
+.contact-info {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.contact-info-card {
+    padding: 28px;
+    display: flex;
+    align-items: flex-start;
+    gap: 18px;
+    border-radius: var(--radius-xl);
+}
+
+.contact-info-icon {
+    width: 48px;
+    height: 48px;
+    border-radius: var(--radius-md);
+    background: rgba(26, 192, 181, 0.08);
+    border: 1px solid rgba(26, 192, 181, 0.15);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.2rem;
+    flex-shrink: 0;
+}
+
+.contact-info-text h4 {
+    font-size: 0.92rem;
+    margin-bottom: 4px;
+}
+
+.contact-info-text p {
+    font-size: 0.88rem;
+}
+
+.schedule-call {
+    margin-top: 8px;
+    padding: 28px;
+    text-align: center;
+    border-radius: var(--radius-xl);
+}
+
+.schedule-call p {
+    margin-bottom: 18px;
+    font-size: 0.95rem;
+}
+
+/* Global Visual */
+.global-visual {
+    margin-top: 80px;
+    text-align: center;
+    padding: 80px;
+    background: var(--bg-card);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-xl);
+    position: relative;
+    overflow: hidden;
+}
+
+.global-visual::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(circle at 50% 50%, rgba(26, 192, 181, 0.04) 0%, rgba(255, 107, 53, 0.02) 50%, transparent 70%);
+}
+
+.global-visual>* {
+    position: relative;
+}
+
+.globe-art {
+    width: 180px;
+    height: 180px;
+    margin: 0 auto 28px;
+    border-radius: 50%;
+    border: 1px solid rgba(26, 192, 181, 0.2);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 4rem;
+    background: radial-gradient(circle at 30% 30%, rgba(26, 192, 181, 0.06), transparent);
+    animation: float 6s ease-in-out infinite;
+    box-shadow: 0 0 60px rgba(26, 192, 181, 0.1);
+}
+
+.global-visual h3 {
+    margin-bottom: 8px;
+}
+
+.global-visual p {
+    font-size: 0.95rem;
+}
+
+@media (max-width: 768px) {
+    .contact-layout {
+        grid-template-columns: 1fr;
+    }
+
+    .form-row {
+        grid-template-columns: 1fr;
+    }
+}

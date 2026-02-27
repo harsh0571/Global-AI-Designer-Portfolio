@@ -1,0 +1,254 @@
+/* ========================================
+   Reel Carousel — 9:16 Vertical Video Reels
+   ======================================== */
+
+.reel-carousel {
+    margin: 48px 0;
+}
+
+.reel-carousel-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 24px;
+}
+
+.reel-carousel-header h3 {
+    font-family: var(--font-heading);
+    font-size: 1.5rem;
+    font-weight: 800;
+    color: var(--text-primary);
+}
+
+.reel-carousel-nav {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.reel-nav-btn {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    background: rgba(255, 255, 255, 0.05);
+    color: var(--text-primary);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.reel-nav-btn:hover:not(:disabled) {
+    background: rgba(26, 192, 181, 0.2);
+    border-color: var(--accent-teal);
+}
+
+.reel-nav-btn:disabled {
+    opacity: 0.3;
+    cursor: not-allowed;
+}
+
+.reel-counter {
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    font-variant-numeric: tabular-nums;
+    min-width: 48px;
+    text-align: center;
+}
+
+/* ---- Track ---- */
+.reel-track {
+    display: flex;
+    gap: 20px;
+    overflow-x: auto;
+    overflow-y: hidden;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+    padding: 8px 4px 16px;
+    cursor: grab;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+    user-select: none;
+}
+
+.reel-track::-webkit-scrollbar {
+    display: none;
+}
+
+.reel-track.grabbing {
+    cursor: grabbing;
+    scroll-snap-type: none;
+}
+
+/* ---- Card ---- */
+.reel-card {
+    flex: 0 0 240px;
+    scroll-snap-align: center;
+    transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.4s ease;
+}
+
+.reel-card.active {
+    transform: scale(1.03);
+}
+
+.reel-card-inner {
+    position: relative;
+    aspect-ratio: 9 / 16;
+    border-radius: var(--radius-lg, 24px);
+    overflow: hidden;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.reel-card.active .reel-card-inner {
+    border-color: rgba(26, 192, 181, 0.4);
+    box-shadow: 0 0 40px rgba(26, 192, 181, 0.12), 0 20px 60px rgba(0, 0, 0, 0.5);
+}
+
+.reel-card-inner:hover {
+    border-color: rgba(26, 192, 181, 0.3);
+    box-shadow: 0 0 30px rgba(26, 192, 181, 0.08), 0 16px 48px rgba(0, 0, 0, 0.4);
+}
+
+/* Background image (faint) */
+.reel-card-bg {
+    position: absolute;
+    inset: 0;
+    background-size: cover;
+    background-position: center;
+    opacity: 0.15;
+    filter: blur(2px);
+}
+
+/* Video element */
+.reel-video {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: 1;
+}
+
+/* Play overlay */
+.reel-play-overlay {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 2;
+}
+
+.reel-play-btn {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background: rgba(26, 192, 181, 0.25);
+    backdrop-filter: blur(12px);
+    border: 1px solid rgba(26, 192, 181, 0.4);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-left: 4px;
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+.reel-card-inner:hover .reel-play-btn {
+    background: rgba(26, 192, 181, 0.4);
+    transform: scale(1.1);
+    box-shadow: 0 0 30px rgba(26, 192, 181, 0.3);
+}
+
+/* 9:16 badge */
+.reel-badge {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    background: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(8px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    padding: 4px 10px;
+    border-radius: 20px;
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    color: var(--accent-teal);
+    z-index: 3;
+}
+
+/* Label at bottom */
+.reel-card-label {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 20px 16px 16px;
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.8) 0%, transparent 100%);
+    z-index: 3;
+}
+
+.reel-label-text {
+    display: block;
+    font-weight: 700;
+    font-size: 0.9rem;
+    color: var(--text-primary);
+    margin-bottom: 2px;
+}
+
+.reel-label-placeholder {
+    display: block;
+    font-size: 0.72rem;
+    color: var(--text-muted);
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+}
+
+/* ---- Dots ---- */
+.reel-dots {
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+    margin-top: 20px;
+}
+
+.reel-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    border: none;
+    background: rgba(255, 255, 255, 0.15);
+    cursor: pointer;
+    padding: 0;
+    transition: all 0.3s ease;
+}
+
+.reel-dot.active {
+    background: var(--accent-teal);
+    width: 24px;
+    border-radius: 4px;
+}
+
+.reel-dot:hover:not(.active) {
+    background: rgba(255, 255, 255, 0.3);
+}
+
+/* ---- Responsive ---- */
+@media (max-width: 768px) {
+    .reel-card {
+        flex: 0 0 200px;
+    }
+
+    .reel-carousel-header h3 {
+        font-size: 1.25rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .reel-card {
+        flex: 0 0 170px;
+    }
+}
