@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import { ScrollReveal } from '../hooks/useScrollReveal';
 import { IconTarget, IconZap, IconFilm, IconImage, IconVideo, IconMusic, IconGlobe, IconLayers } from '../components/Icons';
@@ -47,6 +47,76 @@ const faqs = [
 export default function Home() {
     const [activeTestimonial, setActiveTestimonial] = useState(0);
     const [openFaq, setOpenFaq] = useState(null);
+    const [isPlaying, setIsPlaying] = useState(false);
+    const [isMuted, setIsMuted] = useState(true);
+    const [progress, setProgress] = useState(0);
+    const [isDragging, setIsDragging] = useState(false);
+    const showreelRef = useRef(null);
+    const videoRef = useRef(null);
+
+    const handleWatchShowreel = () => {
+        if (videoRef.current) {
+            videoRef.current.muted = false;
+            videoRef.current.volume = 1;
+            setIsMuted(false);
+            videoRef.current.play().then(() => setIsPlaying(true)).catch(e => console.error("Video play failed", e));
+
+            const reqFs = videoRef.current.requestFullscreen || videoRef.current.webkitRequestFullscreen || videoRef.current.msRequestFullscreen;
+            if (reqFs) {
+                try {
+                    reqFs.call(videoRef.current).then(() => {
+                        // Scroll in the background silently so it's there when user exits fullscreen
+                        if (showreelRef.current) showreelRef.current.scrollIntoView({ behavior: 'instant' });
+                    }).catch(() => {
+                        if (showreelRef.current) showreelRef.current.scrollIntoView({ behavior: 'smooth' });
+                    });
+                } catch (e) {
+                    if (showreelRef.current) showreelRef.current.scrollIntoView({ behavior: 'smooth' });
+                }
+            } else {
+                if (showreelRef.current) showreelRef.current.scrollIntoView({ behavior: 'smooth' });
+            }
+        }
+    };
+
+    const togglePlay = () => {
+        if (videoRef.current) {
+            if (isPlaying) {
+                videoRef.current.pause();
+                setIsPlaying(false);
+            } else {
+                videoRef.current.play().then(() => setIsPlaying(true)).catch(e => console.error("Video play failed", e));
+            }
+        }
+    };
+
+    const toggleMute = (e) => {
+        e.stopPropagation();
+        if (videoRef.current) {
+            const nextMuted = !isMuted;
+            videoRef.current.muted = nextMuted;
+            if (!nextMuted) {
+                videoRef.current.volume = 1;
+            }
+            setIsMuted(nextMuted);
+        }
+    };
+
+    const handleTimeUpdate = () => {
+        if (videoRef.current && !isDragging) {
+            const p = (videoRef.current.currentTime / videoRef.current.duration) * 100;
+            setProgress(p);
+        }
+    };
+
+    const handleSeek = (e) => {
+        e.stopPropagation();
+        if (videoRef.current) {
+            const seekTime = (e.target.value / 100) * videoRef.current.duration;
+            videoRef.current.currentTime = seekTime;
+            setProgress(e.target.value);
+        }
+    };
 
     useEffect(() => {
         const timer = setInterval(() => {
@@ -80,8 +150,50 @@ export default function Home() {
                         advanced AI — images, videos, and custom audio at production scale.
                     </p>
                     <div className="hero-buttons">
-                        <button className="btn btn-primary">Watch Showreel</button>
+                        <button className="btn btn-primary" onClick={handleWatchShowreel}>Watch Showreel</button>
                         <Link to="/work" className="btn btn-secondary">Explore Portfolio →</Link>
+                    </div>
+                </div>
+            </section>
+
+            {/* SHOWREEL VIDEO PLACEHOLDER */}
+            <section className="showreel-section" ref={showreelRef}>
+                <div className="container">
+                    <div className="showreel-wrapper" onClick={togglePlay} style={{ cursor: 'pointer' }}>
+                        <video
+                            ref={videoRef}
+                            className="showreel-video"
+                            src="/videos/showreel/showreel.mp4"
+                            poster="/images/project-3.png"
+                            onTimeUpdate={handleTimeUpdate}
+                            onEnded={() => setIsPlaying(false)}
+                            muted={isMuted}
+                            loop
+                            playsInline
+                        />
+                        <div className="showreel-overlay">
+                            <span className="showreel-badge">AI Cinematic Showreel</span>
+                        </div>
+                        <div className="custom-video-controls" onClick={(e) => e.stopPropagation()}>
+                            <button className="control-btn" onClick={togglePlay}>
+                                {isPlaying ? 'Pause' : 'Play'}
+                            </button>
+                            <input
+                                type="range"
+                                min="0"
+                                max="100"
+                                value={progress || 0}
+                                onChange={handleSeek}
+                                onMouseDown={() => setIsDragging(true)}
+                                onMouseUp={() => setIsDragging(false)}
+                                onTouchStart={() => setIsDragging(true)}
+                                onTouchEnd={() => setIsDragging(false)}
+                                className="progress-slider"
+                            />
+                            <button className="control-btn" onClick={toggleMute}>
+                                {isMuted ? 'Unmute' : 'Mute'}
+                            </button>
+                        </div>
                     </div>
                 </div>
             </section>

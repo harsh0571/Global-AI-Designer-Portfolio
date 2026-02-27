@@ -89,6 +89,8 @@ export default function ReelCarousel({ reels = [], projectImage, projectSlug }) 
         const video = videoRefs.current[id];
         if (!video) return;
         if (video.paused) {
+            video.muted = false;
+            video.volume = 1;
             video.play();
             setPlaying(prev => ({ ...prev, [id]: true }));
         } else {
