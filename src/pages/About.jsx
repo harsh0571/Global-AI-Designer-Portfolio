@@ -26,9 +26,7 @@ export default function About() {
                         <div className="about-hero">
                             <div className="about-avatar">
                                 <div className="about-avatar-frame">
-                                    <div className="about-avatar-gradient">
-                                        <IconCode size={64} color="var(--accent-teal)" />
-                                    </div>
+                                    <img src="/images/about-profile.jpg" alt="Harsh Jain" className="about-profile-image" />
                                 </div>
                                 <div className="about-avatar-glow" />
                             </div>
